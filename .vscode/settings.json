@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "StrategyTutorial.sln"
+    "dotnet.defaultSolution": "TurnBasedStrategyTutorial.sln"
 }
