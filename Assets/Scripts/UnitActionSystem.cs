@@ -32,6 +32,11 @@ public class UnitActionSystem : MonoBehaviour
             if(_selectedUnit.GetMoveAction().IsValidActionGridPosition(mouseGridPosition))
                 _selectedUnit.GetMoveAction().Move(mouseGridPosition);
         }
+
+        if(Input.GetMouseButtonDown(1))
+        {
+            _selectedUnit.GetSpinAction().Spin();
+        }
     }
 
     private bool TryHandleUnitSelection()
