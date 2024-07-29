@@ -2,18 +2,12 @@ using UnityEngine;
 
 public class Unit : MonoBehaviour
 {
-    [SerializeField] private Animator _animator;
-
-    private Vector3 _targetPosition;
     private GridPosition gridPosition;
-
-    private float _moveSpeed = 4f;
-    private float _rotateSpeed = 10f;
-    private float _stopLimit = .1f;
+    private MoveAction moveAction;
 
     private void Awake() 
     {
-        _targetPosition = transform.position;
+        moveAction = GetComponent<MoveAction>();
     }
 
     private void Start() 
@@ -24,16 +18,6 @@ public class Unit : MonoBehaviour
 
     private void Update() 
     {
-        if(Vector3.Distance(_targetPosition, transform.position) > _stopLimit)
-        {
-            Vector3 movePosition = (_targetPosition - transform.position).normalized;
-            transform.position += movePosition * Time.deltaTime * _moveSpeed;
-            transform.forward = Vector3.Lerp(transform.forward, movePosition, Time.deltaTime * _rotateSpeed);
-            _animator.SetBool("IsWalking", true);
-        }
-        else
-            _animator.SetBool("IsWalking", false);
-
         GridPosition newGridPosition = LevelGrid.Instance.GetGridPosition(transform.position);
         if(newGridPosition != gridPosition)
         {
@@ -42,8 +26,13 @@ public class Unit : MonoBehaviour
         }
     }
 
-    public void Move(Vector3 targetPosition)
+    public MoveAction GetMoveAction()
     {
-        this._targetPosition = targetPosition;
+        return moveAction;
+    }
+
+    public GridPosition GetGridPosition()
+    {
+        return gridPosition;
     }
 }
