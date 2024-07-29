@@ -10,6 +10,8 @@ public class UnitActionSystem : MonoBehaviour
 
     public event EventHandler OnSelectedUnitChanged;
 
+    private bool isBusy;
+
     private void Awake() 
     {
         if(Instance != null)
@@ -23,6 +25,9 @@ public class UnitActionSystem : MonoBehaviour
     }
     private void Update() 
     {
+        if(isBusy)
+            return;
+
         if(Input.GetMouseButtonDown(0))
         {
             if(TryHandleUnitSelection()) return;
@@ -30,13 +35,27 @@ public class UnitActionSystem : MonoBehaviour
             GridPosition mouseGridPosition = LevelGrid.Instance.GetGridPosition(MouseWorld.GetPosition());
 
             if(_selectedUnit.GetMoveAction().IsValidActionGridPosition(mouseGridPosition))
+            {
+                SetBusy();
                 _selectedUnit.GetMoveAction().Move(mouseGridPosition);
+            }  
         }
 
         if(Input.GetMouseButtonDown(1))
         {
-            _selectedUnit.GetSpinAction().Spin();
+            SetBusy();
+            _selectedUnit.GetSpinAction().Spin(ClearBusy);
         }
+    }
+
+    private void SetBusy()
+    {
+        isBusy = true;
+    }
+
+    private void ClearBusy()
+    {
+        isBusy = false;
     }
 
     private bool TryHandleUnitSelection()
