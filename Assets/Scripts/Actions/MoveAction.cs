@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -34,13 +35,15 @@ public class MoveAction : BaseAction
         {
             _animator.SetBool("IsWalking", false);
             isActive = false;
+            onActionComplete();
         }
 
         transform.forward = Vector3.Lerp(transform.forward, movePosition, Time.deltaTime * _rotateSpeed);
     }
 
-    public void Move(GridPosition gridPosition)
+    public void Move(GridPosition gridPosition, Action onActionComplete)
     {
+        this.onActionComplete = onActionComplete;
         this._targetPosition = LevelGrid.Instance.GetWorldPosition(gridPosition);
         isActive =  true;
     }
