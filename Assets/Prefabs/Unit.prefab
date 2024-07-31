@@ -61,7 +61,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08dcd2e672ec3fd44aee44511bb7995b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _animator: {fileID: 5756071439609855629}
+  animator: {fileID: 5756071439609855629}
   maxMoveDistance: 4
 --- !u!114 &2941393533150645430
 MonoBehaviour:
@@ -192,7 +192,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 686c02a8799f3f240b4e5fce27f94df2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _unit: {fileID: 7629148772315932035}
+  unit: {fileID: 7629148772315932035}
 --- !u!1001 &5671687414686290133
 PrefabInstance:
   m_ObjectHideFlags: 0

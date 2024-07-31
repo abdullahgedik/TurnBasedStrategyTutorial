@@ -891,7 +891,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9239f6a4ec227db44a64920a9952e823, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hitLayer:
+  hitLayer:
     serializedVersion: 2
     m_Bits: 64
 --- !u!4 &997847360
@@ -1062,8 +1062,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34d1a9ccb12b32e408084adfb2190413, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _selectedUnit: {fileID: 1022841065}
-  _unitLayer:
+  selectedUnit: {fileID: 1022841065}
+  unitLayer:
     serializedVersion: 2
     m_Bits: 128
 --- !u!4 &1319005184
