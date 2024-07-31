@@ -5,11 +5,12 @@ public class UnitActionSystem : MonoBehaviour
 {
     public static UnitActionSystem Instance { get; private set;}
 
-    [SerializeField] private Unit _selectedUnit;
-    [SerializeField] private LayerMask _unitLayer;
+    [SerializeField] private Unit selectedUnit;
+    [SerializeField] private LayerMask unitLayer;
 
     public event EventHandler OnSelectedUnitChanged;
 
+    private BaseAction selectedAction;
     private bool isBusy;
 
     private void Awake() 
@@ -23,6 +24,12 @@ public class UnitActionSystem : MonoBehaviour
 
         Instance = this;
     }
+
+    private void Start() 
+    {
+        SetSelectedUnit(selectedUnit);    
+    }
+
     private void Update() 
     {
         if(isBusy)
@@ -34,17 +41,17 @@ public class UnitActionSystem : MonoBehaviour
 
             GridPosition mouseGridPosition = LevelGrid.Instance.GetGridPosition(MouseWorld.GetPosition());
 
-            if(_selectedUnit.GetMoveAction().IsValidActionGridPosition(mouseGridPosition))
+            if(selectedUnit.GetMoveAction().IsValidActionGridPosition(mouseGridPosition))
             {
                 SetBusy();
-                _selectedUnit.GetMoveAction().Move(mouseGridPosition, ClearBusy);
+                selectedUnit.GetMoveAction().Move(mouseGridPosition, ClearBusy);
             }  
         }
 
         if(Input.GetMouseButtonDown(1))
         {
             SetBusy();
-            _selectedUnit.GetSpinAction().Spin(ClearBusy);
+            selectedUnit.GetSpinAction().Spin(ClearBusy);
         }
     }
 
@@ -61,7 +68,7 @@ public class UnitActionSystem : MonoBehaviour
     private bool TryHandleUnitSelection()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if(Physics.Raycast(ray, out RaycastHit raycastHit, float.MaxValue, _unitLayer))
+        if(Physics.Raycast(ray, out RaycastHit raycastHit, float.MaxValue, unitLayer))
         {
             if(raycastHit.transform.TryGetComponent(out Unit unit))
             {
@@ -74,12 +81,14 @@ public class UnitActionSystem : MonoBehaviour
 
     private void SetSelectedUnit(Unit unit)
     {
-        _selectedUnit = unit;
+        selectedUnit = unit;
+        selectedAction = unit.GetMoveAction();
+
         OnSelectedUnitChanged?.Invoke(this, EventArgs.Empty);
     }
 
     public Unit GetSelectedUnit()
     {
-        return _selectedUnit;
+        return selectedUnit;
     }
 }

@@ -3,7 +3,7 @@ using UnityEngine;
 public class MouseWorld : MonoBehaviour
 {
     public static MouseWorld instance;
-    [SerializeField] private LayerMask _hitLayer;
+    [SerializeField] private LayerMask hitLayer;
 
     private void Awake() 
     {
@@ -13,7 +13,7 @@ public class MouseWorld : MonoBehaviour
     public static Vector3 GetPosition()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        Physics.Raycast(ray, out RaycastHit raycastHit, float.MaxValue, instance._hitLayer);
+        Physics.Raycast(ray, out RaycastHit raycastHit, float.MaxValue, instance.hitLayer);
         return raycastHit.point;
     }
 }

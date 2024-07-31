@@ -4,19 +4,19 @@ using UnityEngine;
 
 public class MoveAction : BaseAction
 {
-    [SerializeField] private Animator _animator;
+    [SerializeField] private Animator animator;
     [SerializeField] private int maxMoveDistance = 4;
 
-    private Vector3 _targetPosition;
+    private Vector3 targetPosition;
 
-    private float _moveSpeed = 4f;
-    private float _rotateSpeed = 10f;
-    private float _stopLimit = .1f;
+    private float moveSpeed = 4f;
+    private float rotateSpeed = 10f;
+    private float stopLimit = .1f;
 
     protected override void Awake() 
     {
         base.Awake();
-        _targetPosition = transform.position;
+        targetPosition = transform.position;
     }
 
     private void Update() 
@@ -24,27 +24,27 @@ public class MoveAction : BaseAction
         if(!isActive)
             return;
 
-        Vector3 movePosition = (_targetPosition - transform.position).normalized;
+        Vector3 movePosition = (targetPosition - transform.position).normalized;
 
-        if(Vector3.Distance(_targetPosition, transform.position) > _stopLimit)
+        if(Vector3.Distance(targetPosition, transform.position) > stopLimit)
         {
-            transform.position += movePosition * Time.deltaTime * _moveSpeed;
-            _animator.SetBool("IsWalking", true);
+            transform.position += movePosition * Time.deltaTime * moveSpeed;
+            animator.SetBool("IsWalking", true);
         }
         else
         {
-            _animator.SetBool("IsWalking", false);
+            animator.SetBool("IsWalking", false);
             isActive = false;
             onActionComplete();
         }
 
-        transform.forward = Vector3.Lerp(transform.forward, movePosition, Time.deltaTime * _rotateSpeed);
+        transform.forward = Vector3.Lerp(transform.forward, movePosition, Time.deltaTime * rotateSpeed);
     }
 
     public void Move(GridPosition gridPosition, Action onActionComplete)
     {
         this.onActionComplete = onActionComplete;
-        this._targetPosition = LevelGrid.Instance.GetWorldPosition(gridPosition);
+        this.targetPosition = LevelGrid.Instance.GetWorldPosition(gridPosition);
         isActive =  true;
     }
 
