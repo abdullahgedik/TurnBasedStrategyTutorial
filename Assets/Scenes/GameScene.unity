@@ -753,7 +753,7 @@ MonoBehaviour:
   m_BlendUpdateMethod: 1
   m_DefaultBlend:
     m_Style: 1
-    m_Time: 2
+    m_Time: 0.2
     m_CustomCurve:
       serializedVersion: 2
       m_Curve: []
@@ -3018,6 +3018,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gridSystemVisualSinglePrefab: {fileID: 3628970833057159675, guid: fe2b1ab73fa21024e9d27c23faf922ac,
     type: 3}
+  gridVisualTypeMaterialList:
+  - gridVisualType: 0
+    material: {fileID: 2100000, guid: d15932a2274070846a5c2bd4f6de88dc, type: 2}
+  - gridVisualType: 1
+    material: {fileID: 2100000, guid: f023ac936d17ca9488afb9dd859cfae6, type: 2}
+  - gridVisualType: 2
+    material: {fileID: 2100000, guid: 110922d1bc182f4409dcb761ac5e7336, type: 2}
+  - gridVisualType: 3
+    material: {fileID: 2100000, guid: fa3abf192745f484c89eaffce47b408a, type: 2}
+  - gridVisualType: 4
+    material: {fileID: 2100000, guid: b409c9d53ee0895489b326e69722301d, type: 2}
 --- !u!1001 &1981141500
 PrefabInstance:
   m_ObjectHideFlags: 0
