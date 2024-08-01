@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1061017434909590701}
   - component: {fileID: 3078000458923952323}
   - component: {fileID: 7629148772315932035}
+  - component: {fileID: -1852147178156163165}
   - component: {fileID: 759282750621598387}
   - component: {fileID: 2941393533150645430}
   - component: {fileID: 9121096031350412260}
@@ -72,6 +73,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isEnemy: 0
+--- !u!114 &-1852147178156163165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6969503669423349916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a20586bf5ae2574c87cd4f7ced3a643, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 5756071439609855629}
 --- !u!114 &759282750621598387
 MonoBehaviour:
   m_ObjectHideFlags: 0

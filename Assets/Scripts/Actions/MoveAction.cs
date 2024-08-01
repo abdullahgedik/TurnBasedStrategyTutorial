@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class MoveAction : BaseAction
 {
-    [SerializeField] private Animator animator;
     [SerializeField] private int maxMoveDistance = 4;
+
+    public event EventHandler OnStartMoving;
+    public event EventHandler OnStopMoving;
 
     private Vector3 targetPosition;
 
@@ -29,13 +31,12 @@ public class MoveAction : BaseAction
         if(Vector3.Distance(targetPosition, transform.position) > stopLimit)
         {
             transform.position += movePosition * Time.deltaTime * moveSpeed;
-            animator.SetBool("IsWalking", true);
         }
         else
-        {
-            animator.SetBool("IsWalking", false);
-            
+        {            
             ActionComplete();
+
+            OnStopMoving?.Invoke(this, EventArgs.Empty);
         }
 
         transform.forward = Vector3.Lerp(transform.forward, movePosition, Time.deltaTime * rotateSpeed);
@@ -46,6 +47,8 @@ public class MoveAction : BaseAction
         ActionStart(onActionComplete);
 
         this.targetPosition = LevelGrid.Instance.GetWorldPosition(gridPosition);
+
+        OnStartMoving?.Invoke(this, EventArgs.Empty);
     }
 
     public override List<GridPosition> GetValidActionGridPositionList()
