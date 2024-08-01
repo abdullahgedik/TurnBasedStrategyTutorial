@@ -1,7 +1,5 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class ShootAction : BaseAction
@@ -140,8 +138,6 @@ public class ShootAction : BaseAction
 
     public override void TakeAction(GridPosition gridPosition, Action onActionComplete)
     {
-        ActionStart(onActionComplete);
-
         targetUnit = LevelGrid.Instance.GetAnyUnitAtGridPosition(gridPosition);
 
         state = State.Aiming;
@@ -149,5 +145,12 @@ public class ShootAction : BaseAction
         stateTimer = aimingStateTime;
 
         canShootBullet = true;
+
+        ActionStart(onActionComplete);
+    }
+
+    public Unit GetTargetUnit()
+    {
+        return targetUnit;
     }
 }
