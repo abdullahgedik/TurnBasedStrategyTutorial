@@ -459,6 +459,52 @@ MonoBehaviour:
   endTurnButton: {fileID: 1500006892}
   turnNumberText: {fileID: 1041169612}
   enemyTurnVisualGameObject: {fileID: 422699592}
+--- !u!1 &293985982
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 293985984}
+  - component: {fileID: 293985983}
+  m_Layer: 0
+  m_Name: Pathfinding
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &293985983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 293985982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6a830de79b6be349a7e4513c959a2f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gridDebugObjectPrefab: {fileID: 4059454939553349487, guid: 3536b417d521b2c4aad1facad94be923,
+    type: 3}
+--- !u!4 &293985984
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 293985982}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &310224072
 GameObject:
   m_ObjectHideFlags: 0
@@ -3563,6 +3609,7 @@ SceneRoots:
   - {fileID: 1399292953}
   - {fileID: 1974994422}
   - {fileID: 1319005184}
+  - {fileID: 293985984}
   - {fileID: 175866290}
   - {fileID: 832394584}
   - {fileID: 2129649788}
