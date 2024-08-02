@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LevelGrid : MonoBehaviour
 {
-    public static LevelGrid Instance { get; private set;}
+    public static LevelGrid Instance { get; private set; }
 
     public event EventHandler OnAnyUnitMovedGridPosition;
 
@@ -12,9 +12,9 @@ public class LevelGrid : MonoBehaviour
 
     private GridSystem gridSystem;
 
-    private void Awake() 
+    private void Awake()
     {
-        if(Instance != null)
+        if (Instance != null)
         {
             Debug.LogError("There is more than one LevelGrid! " + transform + " - " + Instance);
             Destroy(gameObject);
@@ -23,7 +23,7 @@ public class LevelGrid : MonoBehaviour
 
         Instance = this;
 
-        gridSystem = new GridSystem(10, 10, 2f);  
+        gridSystem = new GridSystem(10, 10, 2f);
         gridSystem.CreateDebugObjects(gridDebugObjectPrefab);
     }
 
@@ -70,7 +70,7 @@ public class LevelGrid : MonoBehaviour
         return gridObject.HasAnyUnit();
     }
 
-    public Unit GetAnyUnitAtGridPosition(GridPosition gridPosition)
+    public Unit GetUnitAtGridPosition(GridPosition gridPosition)
     {
         GridObject gridObject = gridSystem.GetGridObject(gridPosition);
         return gridObject.GetUnit();
