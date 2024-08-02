@@ -138,13 +138,13 @@ public class ShootAction : BaseAction
 
                 Vector3 unitWorldPosition = LevelGrid.Instance.GetWorldPosition(unitGridPosition);
 
-                Vector3 shootDir = (targetUnit.GetWorldPosition() - unitWorldPosition).normalized;
+                Vector3 shootDir = (targetUnit.GetWorldPosition() - unitWorldPosition   ).normalized;
 
                 float unitShoulderHeight = 1.7f;
                 if (Physics.Raycast(
-                    unit.GetWorldPosition() + Vector3.up * unitShoulderHeight,
+                    unitWorldPosition + Vector3.up * unitShoulderHeight,
                     shootDir,
-                    Vector3.Distance(unit.GetWorldPosition(), targetUnit.GetWorldPosition()),
+                    Vector3.Distance(unitWorldPosition, targetUnit.GetWorldPosition()),
                     obstaclesLayerMask))
                 {
                     continue;
