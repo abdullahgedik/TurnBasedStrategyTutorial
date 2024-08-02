@@ -38,11 +38,11 @@ public class Pathfinding : MonoBehaviour
         gridSystem = new GridSystem<PathNode>(width, height, cellSize,
             (GridSystem<PathNode> g, GridPosition gridPosition) => new PathNode(gridPosition));
 
-        gridSystem.CreateDebugObjects(gridDebugObjectPrefab);
+        // gridSystem.CreateDebugObjects(gridDebugObjectPrefab);
 
         for (int x = 0; x < width; x++)
         {
-            for (int z = 0; z < width; z++)
+            for (int z = 0; z < height; z++)
             {
                 GridPosition gridPosition = new GridPosition(x, z);
                 Vector3 worldPosition = LevelGrid.Instance.GetWorldPosition(gridPosition);
@@ -50,7 +50,7 @@ public class Pathfinding : MonoBehaviour
                 if (Physics.Raycast(
                     worldPosition + Vector3.down * raycastOffsetDistance,
                     Vector3.up,
-                    raycastOffsetDistance * 2,
+                    raycastOffsetDistance * 1.1f,
                     obstaclesLayerMask))
                 {
                     GetNode(x, z).SetIsWalkable(false);
