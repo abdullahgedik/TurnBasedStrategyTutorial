@@ -157,9 +157,5 @@ public class UnitActionSystem : MonoBehaviour
         {
             SetSelectedUnit(UnitManager.Instance.GetFriendlyUnitList()[0]);
         }
-        else
-        {
-            Debug.Log("There's no friendly unit left to continue!");
-        }
     }
 }
