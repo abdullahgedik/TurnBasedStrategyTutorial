@@ -56,6 +56,12 @@ public class UnitActionSystem : MonoBehaviour
             return;
         }
 
+        if (selectedUnit == null)
+        {
+            OnSelectedUnitDeath();
+            return;
+        }
+
         HandleSelectedAction();
     }
 
@@ -143,5 +149,17 @@ public class UnitActionSystem : MonoBehaviour
     public BaseAction GetSelectedAction()
     {
         return selectedAction;
+    }
+
+    private void OnSelectedUnitDeath()
+    {
+        if (UnitManager.Instance.GetFriendlyUnitList().Count > 0)
+        {
+            SetSelectedUnit(UnitManager.Instance.GetFriendlyUnitList()[0]);
+        }
+        else
+        {
+            Debug.Log("There's no friendly unit left to continue!");
+        }
     }
 }

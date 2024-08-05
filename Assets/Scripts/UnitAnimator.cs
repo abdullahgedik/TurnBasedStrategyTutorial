@@ -8,15 +8,18 @@ public class UnitAnimator : MonoBehaviour
     [SerializeField] private Transform bulletProjectilePrefab;
     [SerializeField] private Transform shootPointTransform;
 
+    private MoveAction moveAction;
+    private ShootAction shootAction;
+
     private void Awake()
     {
-        if(TryGetComponent<MoveAction>(out MoveAction moveAction))
+        if(TryGetComponent<MoveAction>(out moveAction))
         {
             moveAction.OnStartMoving += MoveAction_OnStartMoving;
             moveAction.OnStopMoving += MoveAction_OnStopMoving;
         }
 
-        if(TryGetComponent<ShootAction>(out ShootAction shootAction))
+        if(TryGetComponent<ShootAction>(out shootAction))
         {
             shootAction.OnShoot += ShootAction_OnShoot;
         }
